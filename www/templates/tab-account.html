@@ -1,0 +1,75 @@
+<ion-view view-title="Configurações">
+  <ion-content>
+    <ion-list>
+
+      <div class="item item-divider">
+        Conta
+      </div>
+
+      <a href="#/tab/login" class="item item-icon-right" >
+        
+        Login / Cadastro
+        <i class="icon ion-social-angular"></i>
+      </a>
+
+      <a class="item item-icon-right" ng-click='goProfile()'>
+       <i class="icon ion-ios-person" ></i>
+       Meu Perfil
+      </a>
+
+      
+
+      <div class="item " ng-click="initDB()">
+       <i class="icon ion-earth positive" ></i>
+       Init DB
+      </div>
+
+      <!-- <div class="item " ng-click="getIp()">
+       <i class="icon ion-earth positive" ></i>
+       getIP
+      </div>
+      
+      <div class="item " ng-click="testNodeServer()">
+       <i class="icon ion-earth assertive" ></i>
+       testNodeServer
+      </div> -->
+
+      <div class="item item-divider">
+       Preferências
+      </div>
+
+      <ion-toggle  ng-model="settings.somenteWifi" class="item item-icon-left">
+          <i class="icon ion-wifi positive" ></i>
+          Somente Wifi
+      </ion-toggle>
+      
+      <ion-toggle  ng-model="settings.ativarNotificacoes" class="item item-icon-left">
+        <i class="icon ion-android-notifications energized" ></i>
+        Ativar Notificações
+      </ion-toggle>
+
+      <ion-toggle  ng-model="settings.manterDados" class="item item-icon-left">
+      <i class="icon ion-ios-folder dark"></i>
+          Manter Dados No Dispositivo
+      </ion-toggle>
+
+
+
+      <ion-checkbox>
+        <i class="ico ion-earth" ></i>
+        Escolha 1
+      </ion-checkbox>
+
+      <ion-checkbox>
+        <i class="icon ion-android-cloud " ></i>
+        Escolha 2
+      </ion-checkbox>
+
+
+
+
+
+
+    </ion-list>
+  </ion-content>
+</ion-view>

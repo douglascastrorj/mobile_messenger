@@ -1,0 +1,87 @@
+<ion-view view-title="Chat - Socket.IO"  class="light-grey">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      
+      <button class="button button-clear icon ion-ios-arrow-back left1" ng-click="exit()">
+        Conversas
+      </button>
+    </ion-nav-buttons>
+    <!-- 
+      <ion-nav-buttons side="right">
+      <button class="button button-clear icon ion-reply right8" ng-click="exit()">
+      </button>
+    </ion-nav-buttons>
+    -->
+    
+  </ion-nav-bar>
+  <ion-content >
+
+  <ion-list >
+    <ion-item ng-repeat="message in messages track by $index" class="item-borderless message-wrapper"  on-hold="onHoldMessage(message)">
+
+      
+    
+        <!-- <img ng-click="viewProfile(message)" class="profile-pic left"   src="img/user.png" onerror="onProfilePicError(this)" /> -->
+
+        <div class="chat-bubble right">
+
+          <div class="message" >
+            {{message.content}}
+          </div>
+
+          <div class="message-detail">
+              <span ng-click="viewProfile(message)"  class="bold">{{message.username}}</span>,
+              <span> {{date)}}</span>
+          </div>
+
+        </div>
+      </div>
+
+        
+      
+
+      <div class="cf"></div>
+    </ion-item>
+  </ion-list>
+
+
+    
+
+  </ion-content>
+  <ion-footer-bar keyboard-attach class=" item-input-inset">
+  
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Diga alguma coisa..." on-return="sendMessage(); closeKeyboard()" ng-enter="sendMessage()" ng-model="message" on-focus="inputUp()" on-blur="inputDown()" />  
+    </label>
+    
+    <button class="button button-clear button-positive ion-icon ion-android-send " ng-click="sendMessage()"> </button>
+  </ion-footer-bar>
+   
+
+  <!--
+    <div ng-show="connected">
+    <div class="log pad2">"Welcome to Socket.IO Chat – ";</div>
+    <div class="log">{{number_message}}</div>
+    </div>
+    <div>
+        <ul>
+          <li ng-class="{'message':message.style,'log':!message.style}"  ng-repeat="message in messages" >
+            <span ng-show="message.style" ng-style="{color:message.color}" >{{message.username}} : </span >{{message.content}}
+          </li>
+        </ul>
+    </div>
+  </ion-content>
+  <div class="list light-grey bottommsg">
+    <div class="item item-input-inset light-grey">
+      <label  class="item-input-wrapper line-light-grey nopadtop">
+        <input class="line-light-grey" ng-change="updateTyping()" type="text"  placeholder="Message" ng-enter="sendMessage()" ng-model="message"> 
+      </label>
+      <div class="divsend">
+          <button class="button button-clear ion-android-send iconsend" ng-click="sendMessage()"></button>
+      </div>
+    </div>
+  </div>  
+
+  -->
+
+ </ion-view>

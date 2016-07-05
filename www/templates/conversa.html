@@ -1,0 +1,108 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="Conversas" hide-back-button="true" cache-view="true">
+  <ion-nav-buttons side="left">
+      <a class="button button-clear button-icon icon ion-android-arrow-back" ui-sref="tab.conversas"></a> 
+          
+  </ion-nav-buttons>
+  
+  <ion-content >
+
+  <!-- <div  >
+    <div collection-repeat="message in conversa.messages" class="card" >
+      <div class="item item-avatar item-text-wrap">
+          <img src="img/ionic.png">
+          <h2>{{message.from}}</h2>
+          <p>{{ date }} 12:30</p>
+          <p>{{message.content}}</p>
+      </div>
+    </div>
+  </div> -->
+
+
+  <center>
+    <span class="badge  badge-stable"  ng-click="loadMore()">
+      <i class="icon ion-refresh"></i> Carregar Mais...  
+    </span>
+
+  </center>
+  
+  
+  
+
+  <div id="list">
+
+
+
+  <!-- on-hold="onMessageHold($event, $index, message)" -->
+  <ion-list >
+    <ion-item ng-repeat="message in messages track by $index" class="item-borderless message-wrapper"  on-hold="onHoldMessage(message)">
+
+      
+        
+      <div ng-if="user !== message.fromUser">
+          
+        <!-- <img ng-click="viewProfile(message)" class="profile-pic left"   src="img/user.png" onerror="onProfilePicError(this)" /> -->
+
+        <div ng-class="[classes.chat_left, message.class]">
+
+          <div class="message" >
+            {{message.content}}
+          </div>
+
+          <div class="message-detail">
+              <span ng-click="viewProfile(message)"  class="bold">{{message.fromUser}}</span>,
+              <span> {{DateFormat(message.sendDate)}}</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div ng-if="user === message.fromUser">
+        
+        <!-- <img ng-click="viewProfile(message)" class="profile-pic right"   ng-src="img/user.png" onerror="onProfilePicError(this)" /> -->
+        
+        <div ng-class="[classes.chat_right, message.class]" >
+          <!-- ng-bind-html="message.content | nl2br" autolinker -->
+          <div class="message" >
+
+            {{message.content}}
+          </div>
+
+          <div class="message-detail">
+              <span ng-click="viewProfile(message)" class="bold">{{message.fromUser}}</span>, 
+              <span> {{DateFormat(message.sendDate)}}</span>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="cf"></div>
+    </ion-item>
+
+    <!-- <canvas id="canvas"></canvas> -->
+  </ion-list>
+
+  <!-- <ion-infinite-scroll ng-if="hasMoreItemsAvailable" on-infinite="load()" distance="99%"></ion-infinite-scroll> -->
+
+  </div>
+    
+
+  </ion-content>
+  <ion-footer-bar keyboard-attach class=" item-input-inset">
+  
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Diga alguma coisa..." on-return="sendMessage(); closeKeyboard()" ng-enter="sendMessage()" ng-model="message" on-focus="inputUp()" on-blur="inputDown()" />  
+    </label>
+    
+    <button class="button button-clear button-positive ion-icon ion-android-send " ng-click="sendMessage()"> </button>
+  </ion-footer-bar>
+
+
+
+  
+</ion-view>

@@ -1,0 +1,56 @@
+<ion-view view-title="Conversas" cache-view="true">
+
+  <div class="bar bar-subheader item-input-inset bar-light">
+    
+    <label class="item-input-wrapper">
+
+      <i class="icon place-holder-icon ion-ios-search icon-left"></i>
+      <input type="search" ng-model="query" placeholder="Pesquisa">
+    </label>
+
+  </div>
+
+  <ion-content class="has-subheader">
+
+
+    <ion-list>
+
+      <ion-item class="item-remove-animate item-avatar item-icon-right"  type="item-text-wrap" ng-click="goChat()">
+        <img ng-src="img/grupo_got.jpg">
+        <h2>Chat Socket</h2>
+        <p>
+          Chat Usando SocketIO
+        </p>       
+      </ion-item>
+
+      
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="post in posts" type="item-text-wrap" >
+        <h2>{{post.title}}</h2>
+        <p>{{post.body}}</p>
+      </ion-item>
+
+      
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversa in conversas | filter:query" type="item-text-wrap" href="#/tab/conversas/{{conversa.id}}">
+      <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversa in conversas | filter:query" type="item-text-wrap" ng-click="conversar(conversa)"> -->
+        <img ng-src="{{conversa.img}}">
+        <h2>{{conversa.name}}</h2>
+        <p>
+          {{conversa.lastText | limitTo:100}}
+          {{conversa.lastText.length > 100 ? '&hellip;' : ''}}
+        </p>
+
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-light " ng-click="remove(conversa)">
+          <i style="color:red" class="ico ion-android-delete "></i>
+        </ion-option-button>
+      </ion-item>
+
+      
+    </ion-list>
+
+
+
+
+  </ion-content>
+</ion-view>

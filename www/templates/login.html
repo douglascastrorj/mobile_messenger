@@ -1,0 +1,31 @@
+<ion-view view-title="Login" cache-view="false">
+  <ion-content class="padding">
+
+    <span ng-if="!(user == '' || user == undefined)"  >
+        <span class="balanced"> <strong>Status:</strong> Online </span>
+        
+    </span> 
+
+    <div >
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Username" ng-model="data.username">
+            </label>
+
+             <label class="item item-input">
+                <input type="password" placeholder="Password" ng-model="data.password">
+            </label>
+
+            <label class="item item-input">
+                <input type="text" placeholder="example@example.com" ng-model="data.email">
+            </label>
+           
+        </div>
+        <button ng-if="!(user == '' || user == undefined)" class="button button-block button-assertive" ng-click="logout()">Logout</button>
+        <button ng-if="user == '' || user == undefined "class="button button-block button-positive" ng-click="login()">Login</button>
+        <button class="button button-block button-energized" ng-click="signUp()">Cadastre-se</button> 
+    </div>
+    
+      
+  </ion-content>
+</ion-view>

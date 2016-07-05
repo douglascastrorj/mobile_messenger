@@ -1,0 +1,63 @@
+<ion-view view-title="Contatos">
+
+
+
+  <div class="bar bar-subheader item-input-inset bar-light">
+    <label class="item-input-wrapper">
+
+      <i class="icon place-holder-icon ion-ios-search icon-left"></i>
+      <!-- <i class="icon place-holder-icon ion-search icon-left"></i> -->
+      <input type="search" ng-model="query" placeholder="Pesquisa">
+      
+    </label>
+    <div class="buttons">
+        <button  style="color:#387ef5" class="button button-icon ion-person-add" ng-click="openModal()">
+        </button>
+    </div>
+    
+  </div>
+
+  <ion-content class="has-subheader">
+
+
+    <ion-list>
+       <!-- href="#/tab/dash/{{politico.id}}" -->
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contato in contatos | filter:query  " type="item-text-wrap" ng-click="showOptions(contato)">
+        <img ng-src="{{contato.img}}">
+        <h2>{{contato.displayName}}</h2>
+
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-light " ng-click="remove(contato)">
+          <i style="color:red" class="ico ion-android-delete "></i>
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+
+
+    <ion-list>
+       <!-- href="#/tab/dash/{{politico.id}}" -->
+      <ion-item ng-if="requests.length > 0 " class="item-divider" type="item-text-wrap" >
+        Pedidos de amizade
+      </ion-item>
+
+      <div class="item item-avatar item-button-right" ng-repeat="request in requests">
+          <img ng-src="img/user.png">
+          <h2>{{request.from}} </h2> 
+          <div class="buttons">
+              <button class="button button-clear button-balanced" ng-click="acceptFriendRequest(request)">
+                  <i class="icon ion-checkmark"></i>
+              </button>
+              <button class="button button-clear button-assertive" ng-click="rejectFriendRequest(request)">
+                  <i class="icon ion-close"></i>
+              </button>
+          </div>
+
+      </div>
+
+    </ion-list>
+
+
+  </ion-content>
+</ion-view>
